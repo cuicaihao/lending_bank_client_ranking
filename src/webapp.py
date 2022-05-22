@@ -22,17 +22,14 @@ from flask import render_template
 from flask import Flask, render_template, request, redirect, url_for
 from joblib import load
 
-
 from .data.sample_format import convert_sample
-from joblib import  load
+from joblib import load
 import pandas as pd
 import random
 
 from autogluon.tabular import TabularPredictor
 
-
 app = Flask(__name__)
-
 
 
 @app.route("/")
@@ -40,17 +37,19 @@ def hello_world():
     # return "<p>Hello, World!</p>"
     return render_template('index.html')
 
+
 # def prediction(xin):
-#     model = load('./src/model_DT.joblib')   
+#     model = load('./src/model_DT.joblib')
 #     df_xin = pd.DataFrame(xin, index=[0])
 #     df_xin.set_index('client_id', inplace=True)
-#     x = df_xin.values   
+#     x = df_xin.values
 #     y_pred = model.predict(x)
 #     y_proba = model.predict_proba(x)
 #     return y_pred, y_proba
 
+
 # when the post method detect, then redirect to success function
-@app.route('/result', methods = ['POST'])
+@app.route('/result', methods=['POST'])
 def result():
     if request.method == 'POST':
         sample = request.form.to_dict()
@@ -60,18 +59,18 @@ def result():
         # xin = convert_sample(sample)
         # print(xin)
         # print('*'*50)
-        
+
         # df_xin = pd.DataFrame(xin, index=[0])
 
         df_xin = pd.DataFrame([sample])
         df_xin.set_index('client_id', inplace=True)
         print(df_xin)
 
-        # model = load('./src/model_DT.joblib')   
-        # x = df_xin.values   
+        # model = load('./src/model_DT.joblib')
+        # x = df_xin.values
         # print('model input: {x}'.format(x=x))
 
-        print('*'*50)
+        print('*' * 50)
 
         # model = TabularPredictor.load('./models/agModels-predictClass')
         model = TabularPredictor.load('./models/agModels-CleanRawF1')
@@ -79,13 +78,16 @@ def result():
         y_proba = model.predict_proba(df_xin)
         print(y_pred, y_proba)
         result = y_pred.values[0]
-        proba  = y_proba.values[0,1]
+        proba = y_proba.values[0, 1]
     else:
         result = 'yes' if random.random() > 0.5 else 0
 
     # if int(result)== 1:
-    if result == 'yes':    
-        action ='Call this Client!'
+    if result == 'yes':
+        action = 'Call this Client!'
     else:
-        action ="Go Next and Come Back Later!"         
-    return render_template("result.html", client_details = sample, action = action, probability= proba)
+        action = "Go Next and Come Back Later!"
+    return render_template("result.html",
+                           client_details=sample,
+                           action=action,
+                           probability=proba)
