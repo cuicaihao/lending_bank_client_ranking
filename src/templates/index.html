@@ -1,0 +1,177 @@
+<html>
+  <body>
+    <h1>Lending Bank Client Decision Prediction </h1>
+    <p>Date: 2022-04-20</p>
+    <h2>Project Background:</h2>  
+    <p>Lending Bank wants to attract term deposits to fund its lending business. In a term deposit, a client agrees to deposit funds and allow the bank to use them for a fixed length of time. In return, the bank will pay interest on the deposit.</p> 
+
+    <p>The bank’s sales manager wants to market the product to their existing clients. They have historical information from a previous marketing campaign that includes client demographics, prior call experience, market conditions and the interest rate offered.</p> 
+    <h2>Application</h2>   
+    Using machine learning, help the bank predict which clients are likely to subscribe to a new term deposit. Explain how different features affect the decision.
+
+    <h2>User Manual</h2>
+    <ul>
+      <li> <b>Step 1:</b> Fill in the client's detail in the form.</li>
+      <li> <b>Step 2:</b> Click the Submit button to get the prediction, or click the Reset button to refill the details.</li>
+    </ul>
+
+    <h3>Client Basic Information</h3>
+    <div>
+      <form action="/result" method="POST">
+        <table border="1" bordercolor="#D6DBDF" cellpadding="5" cellspacing="0">
+          <tr>
+            <th colspan="3">User Table</th> </tr>
+         <tr>
+           <td colspan="2" align="center">Client Information</td>
+           <td align="center">Description</td>
+         </tr>   
+        <tr>
+          <td><label for="client_id">Client_ID</label></td>
+          <td><input type="number" id="client_id" name="client_id" value="000000" min="0" max="999999"/></td>
+          <td>unique ID of the client called [unique key]</td>
+        </tr>
+        <tr>
+          <td>Age</td>
+          <td><select id="age_bracket" name="age_bracket">
+          <option value="18-24">18-24</option>
+          <option value="25-40">25-40</option>
+          <option value="40-60">40-60</option>
+          <option value="60+">60+</option></select>
+        </td>
+        <td>age bracket of the contacted client (in years)</td>
+        </tr>
+        <tr>
+          <td>Job</td>
+          <td><select id="job" name="job">
+          <option value="white-collar">white-collar</option>
+          <option value="blue-collar">blue-collar</option>
+          <option value="pink-collar">pink-collar</option>
+          <option value="technician">technician</option>
+          <option value="entrepreneur">entrepreneur</option>
+          <option value="self-employed">self-employed</option>
+          <option value="other">other</option></select
+        ></td>
+        <td>job type of the contacted client</td>
+        </tr>
+ 
+        <tr>
+          <td>Marital</td>
+          <td><select id="marital" name="marital">
+          <option value="married">married</option>
+          <option value="single">single</option>
+          <option value="divorced">divorced</option>
+          <option value="unknown">unknown</option>
+        </select></td>
+        <td>marital status of the contacted client</td>
+        </tr>
+ 
+        <tr>
+          <td>
+            Education
+          </td>
+          <td>  
+          <select id="education" name="education">
+          <option value="bachelors">bachelors</option>
+          <option value="masters">masters</option>
+          <option value="masters">secondary</option>
+          <option value="senior_secondary">senior_secondary</option>
+          <option value="illiterate">illiterate</option>
+          <option value="unknown">unknown</option>
+        </select>
+          </td>
+          <td>highest level of education done by the client</td>
+        </tr>
+        
+        <tr>
+          <td>Housing_Loan</td>
+          <td>
+        <select id="has_housing_loan" name="has_housing_loan">
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+          <option value="unknown">unknown</option>
+        </select></td>
+        <td>whether the client has a house loan</td>
+        </tr>
+        <tr>
+          <td>Personal_Loan</td>
+          <td><select id="has_personal_loan" name="has_personal_loan">
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+          <option value="unknown">unknown</option>
+        </select></td>
+        <td>whether the client has a personal loan</td>
+        </tr> 
+
+        <tr>
+          <td>
+            Previous Call Duration
+          </td>
+          <td><input
+          type="number"
+          id="prev_call_duration"
+          name="prev_call_duration"
+          value="237"
+        /> </td>
+        <td>last contact duration (value = 0 if the client has not been contacted ever)</td>
+        </tr>
+             
+        <tr>
+          <td>Day Since Last Call</td>
+          <td><input
+          type="number"
+          id="days_since_last_call"
+          name="days_since_last_call"
+          value="3"
+          min="0"
+          max="999"
+        /> </td><td>number of days that passed by after the client was last contacted from a previous campaign (numeric; 999 means client was not previously contacted)</td>
+        </tr>
+
+        <tr>
+          <td>Num. of Previous Contacts</td>
+          <td><input
+            type="number"
+            id="num_contacts_prev"
+            name="num_contacts_prev"
+            value="1"
+            min="0"
+            max="99"
+          />  </td>
+          <td>number of contacts performed before this campaign and for this client (numeric)</td>
+        </tr>
+    
+        <tr>
+          <td>Previous Outcome</td>
+          <td><select id="poutcome" name="poutcome">
+          <option value="nonexistent">nonexistent</option>
+          <option value="success">success</option>
+          <option value="failure">failure</option>
+        </select></td> 
+        <td>outcome of the previous marketing campaign (categorical)</td>
+        </tr>
+ 
+        <tr>
+          <td>Contact_Date</td>
+        <td>
+          <input
+          type="date"
+          id="contact_date"
+          name="contact_date"
+          value="2018-02-05"
+        /> </td> <td>date at which contact was made with the client</td>
+
+        </tr>
+        <tr>
+          <td>CPI</td>
+          <td><input type="number" id="cpi" name="cpi" value="93.44" step="0.01" min="0" max="100"/></td>
+          <td>standing consumer price index before the call (monthly indicator)</td>          
+        </tr>
+        <tr>
+          <td colspan="2" align="center">
+            <input type="reset" value="Reset to Demo" accesskey="r"/>
+            <input type="submit" value="Submit" /></td>
+        </tr>
+      </form>
+    </div>
+  </body>
+</html>

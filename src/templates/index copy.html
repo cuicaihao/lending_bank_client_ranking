@@ -1,0 +1,130 @@
+<html>
+  <body>
+    <h1>Lending Bank Client Calling Check</h1>
+    <h2>Client Basic Information</h2>
+    <div>
+      <form action="/result" method="POST">
+        <table boarder="1" bordercolor="#0000ff" cellpadding="5" cellspacing="0">
+          <tr>
+            <th colspan="2">User Table</th> </tr>
+        <tr>
+          <td>Client_ID</td>
+          <td><input type="text" id="client_id" name="client_id" value="*****" /></td>
+        </tr>
+        <tr>
+          <td>Age</td>
+          <td><select id="age_bracket" name="age_bracket">
+          <option value="18-24">18-24</option>
+          <option value="25-40">25-40</option>
+          <option value="40-60">40-60</option>
+          <option value="60+">60+</option></select>
+        </td>
+        </tr>
+
+        <label for="job">Job</label>
+        <select id="job" name="job">
+          <option value="white-collar">white-collar</option>
+          <option value="blue-collar">blue-collar</option>
+          <option value="pink-collar">pink-collar</option>
+          <option value="technician">technician</option>
+          <option value="entrepreneur">entrepreneur</option>
+          <option value="self-employed">self-employed</option>
+          <option value="other">other</option></select
+        ><br />
+
+        <label for="marital">Marital</label>
+        <!-- 'married': 1, 'single': 2, 'divorced': 3, 'unknown': None -->
+        <select id="marital" name="marital">
+          <option value="married">married</option>
+          <option value="single">single</option>
+          <option value="divorced">divorced</option>
+          <option value="unknown">unknown</option>
+        </select>
+        <br />
+
+        <label for="education">Education</label>
+        <select id="education" name="education">
+          <option value="bachelors">bachelors</option>
+          <option value="masters">masters</option>
+          <option value="masters">secondary</option>
+          <option value="senior_secondary">senior_secondary</option>
+          <option value="illiterate">illiterate</option>
+          <option value="unknown">unknown</option>
+        </select>
+        <br />
+
+        <label for="has_housing_loan">Housing_Loan</label>
+        <!-- {'yes': 1, 'no': 0, 'unknown': None} -->
+        <select id="has_housing_loan" name="has_housing_loan">
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+          <option value="unknown">unknown</option>
+        </select>
+        <br />
+
+        <label for="has_personal_loan">Personal_Loan</label>
+        <select id="has_personal_loan" name="has_personal_loan">
+          <option value="yes">Yes</option>
+          <option value="no">No</option>
+          <option value="unknown">unknown</option>
+        </select>
+        <br />
+
+        <label for="prev_call_duration">Previous Call Duration</label>
+        <input
+          type="text"
+          id="prev_call_duration"
+          name="prev_call_duration"
+          value="60"
+        />
+        btw:[0-99999]
+        <br />
+
+        <label for="days_since_last_call">Day Since Last Call</label>
+        <input
+          type="text"
+          id="days_since_last_call"
+          name="days_since_last_call"
+          value="7"
+        />
+        btw:[0-99999]
+        <br />
+
+        <label for="num_contacts_prev">Number of Contacts Previouse</label>
+        <input
+          type="text"
+          id="num_contacts_prev"
+          name="num_contacts_prev"
+          value="1"
+        />
+        btw:[0-99]
+        <br />
+
+        <label for="poutcome">Previous Outcome</label>
+        <select id="poutcome" name="poutcome">
+          <option value="unknown">unknown</option>
+          <option value="success">success</option>
+          <option value="failure">failure</option>
+          <option value="other">other</option>
+        </select>
+        <br />
+
+        <label for="contact_date">Contact_Date</label>
+        <input
+          type="text"
+          id="contact_date"
+          name="contact_date"
+          value="31/05/22"
+        />
+        e.g. dd/mm/yy
+        <br />
+
+        <label for="cpi">CPI</label>
+        <input type="text" id="cpi" name="cpi" value="97.6" /> btw:[0.0 - 100.0]
+        <br />
+
+        <input type="submit" value="Submit" />
+      </form>
+    </div>
+  </body>
+</html>

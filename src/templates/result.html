@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <h2>Client Information</h2>
+    Details:
+    <br />
+    <table border="1" bordercolor="#D6DBDF" cellpadding="5" cellspacing="0">
+      <thead>
+        <tr>
+          <th>Key</th>
+          <th>Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for key, value in client_details.items() %}
+        <tr>
+          <td>{{ key }}</td>
+          <td>{{ value }}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <h2>Success Probability:</h2>
+    <p>Ratio = {{ probability }}</p>
+    <ul>
+      <li>
+        <p style="color: green">High Priority: Call client now (> 66%)</p>
+      </li>
+      <li>
+        <p style="color: blue">
+          Medium Priority: Go Next and Come Back Later! (33% - 66%)
+        </p>
+      </li>
+      <li>
+        <p style="color: grey">
+          Minor Priority: Only Call When Time Available (0% - 33%)
+        </p>
+        </li>
+        <li>
+          Call the Client, if you have extra knowledge or time.
+        </li> 
+      </li>
+    </ul>
+
+       <h2 id="myaction">Action</h2>
+    <div id="myprob">
+      <p style="font-size: 20px">{{ action }}</p>
+    </div> 
+    <script>
+      var prob = {{probability}};
+      var div_prob = document.getElementById("myprob");
+      if (prob >= 0.66) {
+        div_prob.style.color = "green";
+      }
+      else if (prob >= 0.33 && prob < 0.66) {
+        div_prob.style.color = "blue";}
+      else {
+          div_prob.style.color = "grey";
+      }
+    </script>
+  </body>
+</html>

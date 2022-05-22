@@ -1,0 +1,15 @@
+,0,1,2,3,4
+client_id,41020,23720,29378,36636,38229
+age_bracket,41-60,60+,41-60,25-40,18-24
+job,white-collar,other,white-collar,technician,white-collar
+marital,divorced,divorced,married,single,single
+education,bachelors,secondary,bachelors,senior_secondary,bachelors
+has_housing_loan,yes,no,no,yes,no
+has_personal_loan,no,yes,no,yes,no
+prev_call_duration,283,169,552,206,341
+days_since_last_call,3,6,999,999,999
+num_contacts_prev,1,2,0,0,0
+poutcome,success,success,nonexistent,nonexistent,nonexistent
+contact_date,07/09/18,05/07/18,01/08/18,02/11/18,04/04/18
+cpi,92.379,94.215,93.444,93.2,93.075
+subs_deposit,1,1,1,0,1
